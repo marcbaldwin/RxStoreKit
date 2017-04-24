@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E2B523FD91CD308E568045E /* Pods_RxStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C127711C0821C3A78BAAEAC4 /* Pods_RxStoreKit.framework */; };
 		A03371D11EAA696500B0EA23 /* RxStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03371C71EAA696500B0EA23 /* RxStoreKit.framework */; };
 		A03371D61EAA696500B0EA23 /* RxStoreKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03371D51EAA696500B0EA23 /* RxStoreKitTests.swift */; };
 		A03371D81EAA696500B0EA23 /* RxStoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A03371CA1EAA696500B0EA23 /* RxStoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A03371E21EAA69AB00B0EA23 /* SKProductExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03371E11EAA69AB00B0EA23 /* SKProductExtensions.swift */; };
+		A03371E41EAA6C7300B0EA23 /* SKProduct+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03371E31EAA6C7300B0EA23 /* SKProduct+Rx.swift */; };
+		A03371E61EAA6E9D00B0EA23 /* SKPaymentQueue+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03371E51EAA6E9D00B0EA23 /* SKPaymentQueue+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +27,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4FA26099712D3560933A9511 /* Pods-RxStoreKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxStoreKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxStoreKit/Pods-RxStoreKit.release.xcconfig"; sourceTree = "<group>"; };
 		A03371C71EAA696500B0EA23 /* RxStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03371CA1EAA696500B0EA23 /* RxStoreKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxStoreKit.h; sourceTree = "<group>"; };
 		A03371CB1EAA696500B0EA23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A03371D01EAA696500B0EA23 /* RxStoreKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxStoreKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03371D51EAA696500B0EA23 /* RxStoreKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxStoreKitTests.swift; sourceTree = "<group>"; };
 		A03371D71EAA696500B0EA23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A03371E11EAA69AB00B0EA23 /* SKProductExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKProductExtensions.swift; sourceTree = "<group>"; };
+		A03371E31EAA6C7300B0EA23 /* SKProduct+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKProduct+Rx.swift"; sourceTree = "<group>"; };
+		A03371E51EAA6E9D00B0EA23 /* SKPaymentQueue+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKPaymentQueue+Rx.swift"; sourceTree = "<group>"; };
+		A1D80149B978D07ED4315C9E /* Pods-RxStoreKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxStoreKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxStoreKit/Pods-RxStoreKit.debug.xcconfig"; sourceTree = "<group>"; };
+		C127711C0821C3A78BAAEAC4 /* Pods_RxStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E2B523FD91CD308E568045E /* Pods_RxStoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,12 +61,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4723BB2BC1535B1DC6BC4157 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C127711C0821C3A78BAAEAC4 /* Pods_RxStoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A03371BD1EAA696500B0EA23 = {
 			isa = PBXGroup;
 			children = (
 				A03371C91EAA696500B0EA23 /* RxStoreKit */,
 				A03371D41EAA696500B0EA23 /* RxStoreKitTests */,
 				A03371C81EAA696500B0EA23 /* Products */,
+				A79F62103B183B12AC431586 /* Pods */,
+				4723BB2BC1535B1DC6BC4157 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,8 +92,11 @@
 		A03371C91EAA696500B0EA23 /* RxStoreKit */ = {
 			isa = PBXGroup;
 			children = (
-				A03371CA1EAA696500B0EA23 /* RxStoreKit.h */,
 				A03371CB1EAA696500B0EA23 /* Info.plist */,
+				A03371CA1EAA696500B0EA23 /* RxStoreKit.h */,
+				A03371E31EAA6C7300B0EA23 /* SKProduct+Rx.swift */,
+				A03371E11EAA69AB00B0EA23 /* SKProductExtensions.swift */,
+				A03371E51EAA6E9D00B0EA23 /* SKPaymentQueue+Rx.swift */,
 			);
 			path = RxStoreKit;
 			sourceTree = "<group>";
@@ -84,6 +108,15 @@
 				A03371D71EAA696500B0EA23 /* Info.plist */,
 			);
 			path = RxStoreKitTests;
+			sourceTree = "<group>";
+		};
+		A79F62103B183B12AC431586 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1D80149B978D07ED4315C9E /* Pods-RxStoreKit.debug.xcconfig */,
+				4FA26099712D3560933A9511 /* Pods-RxStoreKit.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,10 +137,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A03371DB1EAA696500B0EA23 /* Build configuration list for PBXNativeTarget "RxStoreKit" */;
 			buildPhases = (
+				65020C4697174ED0420D04E7 /* [CP] Check Pods Manifest.lock */,
 				A03371C21EAA696500B0EA23 /* Sources */,
 				A03371C31EAA696500B0EA23 /* Frameworks */,
 				A03371C41EAA696500B0EA23 /* Headers */,
 				A03371C51EAA696500B0EA23 /* Resources */,
+				E9D0700983DB28DBE5ACE209 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,6 +184,7 @@
 					A03371C61EAA696500B0EA23 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = HYV9U93759;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					A03371CF1EAA696500B0EA23 = {
@@ -193,11 +229,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		65020C4697174ED0420D04E7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E9D0700983DB28DBE5ACE209 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxStoreKit/Pods-RxStoreKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A03371C21EAA696500B0EA23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A03371E61EAA6E9D00B0EA23 /* SKPaymentQueue+Rx.swift in Sources */,
+				A03371E21EAA69AB00B0EA23 /* SKProductExtensions.swift in Sources */,
+				A03371E41EAA6C7300B0EA23 /* SKProduct+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +395,9 @@
 		};
 		A03371DC1EAA696500B0EA23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1D80149B978D07ED4315C9E /* Pods-RxStoreKit.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HYV9U93759;
@@ -336,13 +410,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.marcb.RxStoreKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		A03371DD1EAA696500B0EA23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FA26099712D3560933A9511 /* Pods-RxStoreKit.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HYV9U93759;
@@ -362,6 +439,7 @@
 		A03371DF1EAA696500B0EA23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = HYV9U93759;
 				INFOPLIST_FILE = RxStoreKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -374,6 +452,7 @@
 		A03371E01EAA696500B0EA23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = HYV9U93759;
 				INFOPLIST_FILE = RxStoreKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -402,6 +481,7 @@
 				A03371DD1EAA696500B0EA23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A03371DE1EAA696500B0EA23 /* Build configuration list for PBXNativeTarget "RxStoreKitTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +490,7 @@
 				A03371E01EAA696500B0EA23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
