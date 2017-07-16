@@ -1,8 +1,8 @@
 import StoreKit
 
-extension SKProduct {
+public extension SKProduct {
 
-    var localizedPrice: String? {
+    public var localizedPrice: String? {
         let priceFormatter = NumberFormatter()
         priceFormatter.formatterBehavior = .behavior10_4
         priceFormatter.numberStyle = .currency
