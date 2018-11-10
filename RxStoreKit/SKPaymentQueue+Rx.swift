@@ -16,8 +16,8 @@ public extension Reactive where Base : SKPaymentQueue {
 
 private class SKPaymentQueueObserver: NSObject {
 
-    fileprivate let observer: AnyObserver<[SKPaymentTransaction]>
-    fileprivate var transactions = [SKPaymentTransaction]()
+    private let observer: AnyObserver<[SKPaymentTransaction]>
+    private var transactions = [SKPaymentTransaction]()
 
     init(observer: AnyObserver<[SKPaymentTransaction]>) {
         self.observer = observer

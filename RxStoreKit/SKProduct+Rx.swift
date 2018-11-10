@@ -19,8 +19,8 @@ public extension SKProduct {
 
 private final class ProductRequestObservable: NSObject {
 
-    fileprivate let request: SKProductsRequest
-    fileprivate let observer: AnyObserver<[SKProduct]>
+    private let request: SKProductsRequest
+    private let observer: AnyObserver<[SKProduct]>
 
     init(productIds: [String], observer: AnyObserver<[SKProduct]>) {
         self.request = SKProductsRequest(productIdentifiers: Set(productIds))
@@ -38,7 +38,7 @@ private final class ProductRequestObservable: NSObject {
 
 extension ProductRequestObservable: SKProductsRequestDelegate {
 
-    @objc func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         if response.invalidProductIdentifiers.isEmpty {
             observer.onNext(response.products)
             observer.onCompleted()
