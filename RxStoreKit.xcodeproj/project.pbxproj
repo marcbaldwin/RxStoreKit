@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49DE8662219854F100869051 /* SKRequest+RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE8661219854F100869051 /* SKRequest+RxSwift.swift */; };
 		8E2B523FD91CD308E568045E /* Pods_RxStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C127711C0821C3A78BAAEAC4 /* Pods_RxStoreKit.framework */; };
 		A03371D11EAA696500B0EA23 /* RxStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03371C71EAA696500B0EA23 /* RxStoreKit.framework */; };
 		A03371D61EAA696500B0EA23 /* RxStoreKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03371D51EAA696500B0EA23 /* RxStoreKitTests.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49DE8661219854F100869051 /* SKRequest+RxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKRequest+RxSwift.swift"; sourceTree = "<group>"; };
 		4FA26099712D3560933A9511 /* Pods-RxStoreKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxStoreKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxStoreKit/Pods-RxStoreKit.release.xcconfig"; sourceTree = "<group>"; };
 		A03371C71EAA696500B0EA23 /* RxStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03371CA1EAA696500B0EA23 /* RxStoreKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxStoreKit.h; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				A03371E31EAA6C7300B0EA23 /* SKProduct+Rx.swift */,
 				A03371E11EAA69AB00B0EA23 /* SKProductExtensions.swift */,
 				A03371E51EAA6E9D00B0EA23 /* SKPaymentQueue+Rx.swift */,
+				49DE8661219854F100869051 /* SKRequest+RxSwift.swift */,
 			);
 			path = RxStoreKit;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49DE8662219854F100869051 /* SKRequest+RxSwift.swift in Sources */,
 				A03371E61EAA6E9D00B0EA23 /* SKPaymentQueue+Rx.swift in Sources */,
 				A03371E21EAA69AB00B0EA23 /* SKProductExtensions.swift in Sources */,
 				A03371E41EAA6C7300B0EA23 /* SKProduct+Rx.swift in Sources */,
