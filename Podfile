@@ -3,4 +3,6 @@ use_frameworks!
 
 target 'RxStoreKit' do
   pod 'RxSwift'
+  pod 'Moya'
+  pod 'Moya/RxSwift'
 end

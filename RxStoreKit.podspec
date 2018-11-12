@@ -6,9 +6,12 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/marcbaldwin/RxStoreKit"
   s.author       = { "marcbaldwin" => "marc.baldwin88@gmail.com" }
   s.source       = { :git => "https://github.com/marcbaldwin/RxStoreKit.git", :tag => s.version }
-  s.source_files = "RxStoreKit/*.swift"
+  s.source_files = "RxStoreKit/Source/*.swift"
   s.platform     = :ios, '8.0'
-  s.frameworks   = "Foundation", "UIKit"
+  s.swift_version = '4.2'
+  s.frameworks   = "Foundation", "StoreKit"
   s.requires_arc = true
   s.dependency 'RxSwift'
+  s.dependency 'Moya'
+  s.dependency 'Moya/RxSwift'
 end
