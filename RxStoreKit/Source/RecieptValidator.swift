@@ -29,14 +29,14 @@ public final class ReceiptVaidator {
         self.secret = secret
     }
 
-    public func verifySubscription(productId: String, production: Bool = true) -> Observable<Date?> {
+    public func verifySubscription(productId: String, production: Bool = true) -> Observable<ReceiptItem?> {
         return receiptDataObservable
             .flatMap { [receiptApi] receiptData in
                 receiptApi.rx.request(.verifyReciept(receiptData: receiptData, secret: self.secret, production: production))
             }
             .asObservable()
             .filterSuccessfulStatusCodes()
-            .flatMap { response -> Observable<Date?> in
+            .flatMap { response -> Observable<ReceiptItem?> in
                 let result = try JSONDecoder().decode(ReceiptResult.self, from: response.data)
 
                 if result.status == 21007 {
@@ -47,13 +47,12 @@ public final class ReceiptVaidator {
                     throw ReceiptError.receiptVerificationFailed(statusCode: result.status)
                 }
 
-                let expiryDate = result.latestReceipts?
-                    .filter { $0.productId == productId }
-                    .compactMap { $0.subscriptionExpiryDate }
-                    .sorted { a, b in a > b }
+                let latestReceipt = result.latestReceipts?
+                    .filter { $0.productId == productId && $0.subscriptionExpiryDate != nil }
+                    .sorted { a, b in a.subscriptionExpiryDate! > b.subscriptionExpiryDate! }
                     .first
 
-                return .just(expiryDate)
+                return .just(latestReceipt)
             }
     }
 }
