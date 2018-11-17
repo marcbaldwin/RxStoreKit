@@ -2,7 +2,7 @@ import Moya
 import RxSwift
 import StoreKit
 
-public final class ReceiptVaidator {
+public final class ReceiptValidator {
 
     private var receiptData: Data? {
         return try? Data(contentsOf: Bundle.main.appStoreReceiptURL!)
