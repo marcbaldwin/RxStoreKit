@@ -38,6 +38,7 @@ extension SKRequestObserver: SKRequestDelegate {
 
     func requestDidFinish(_ request: SKRequest) {
         observer.onNext(request)
+        observer.onCompleted()
     }
 
     func request(_ request: SKRequest, didFailWithError error: Error) {
