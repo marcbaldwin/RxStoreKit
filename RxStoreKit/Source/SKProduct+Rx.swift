@@ -47,7 +47,7 @@ extension ProductRequestObservable: SKProductsRequestDelegate {
         }
     }
 
-    @objc func request(_ request: SKRequest, didFailWithError error: Error) {
+    func request(_ request: SKRequest, didFailWithError error: Error) {
         observer.onError(error)
     }
 }
