@@ -27,6 +27,16 @@ SKPaymentQueue.default().rx.transactionsUpdated
     .disposed(by: disposeBag)
 ```
 
+#### Observe restore completed transactions
+
+```Swift
+SKPaymentQueue.default().rx.restoreCompletedTransactions()
+    .subscribe(onNext: { transactions: [SKPaymentTransaction] in
+        // Unlock content?
+    })
+    .disposed(by: disposeBag)
+```
+
 #### Verify receipts
 
 ```Swift
