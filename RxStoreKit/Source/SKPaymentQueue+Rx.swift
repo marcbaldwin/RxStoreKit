@@ -4,17 +4,32 @@ import StoreKit
 public extension Reactive where Base : SKPaymentQueue {
 
     public var transactionsUpdated: Observable<[SKPaymentTransaction]> {
-        return Observable.create { observer  in
-            let observable = SKPaymentQueueObserver(observer: observer)
-            self.base.add(observable)
-            return Disposables.create {
-                self.base.remove(observable)
+        return Observable.deferred {
+            Observable.create { observer in
+                let observable = TransactionsUpdatedObserver(observer: observer)
+                self.base.add(observable)
+                return Disposables.create {
+                    self.base.remove(observable)
+                }
+            }
+        }
+    }
+
+    public func restoreCompletedTransactions() -> Observable<[SKPaymentTransaction]> {
+        return Observable.deferred {
+            Observable.create { observer in
+                let observable = RestoreCompletedTransactionsObserver(observer: observer)
+                self.base.add(observable)
+                self.base.restoreCompletedTransactions()
+                return Disposables.create {
+                    self.base.remove(observable)
+                }
             }
         }
     }
 }
 
-private class SKPaymentQueueObserver: NSObject {
+private class TransactionsUpdatedObserver: NSObject {
 
     private let observer: AnyObserver<[SKPaymentTransaction]>
 
@@ -24,9 +39,32 @@ private class SKPaymentQueueObserver: NSObject {
     }
 }
 
-extension SKPaymentQueueObserver: SKPaymentTransactionObserver {
+extension TransactionsUpdatedObserver: SKPaymentTransactionObserver {
 
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         observer.onNext(transactions)
+    }
+}
+
+private class RestoreCompletedTransactionsObserver: NSObject {
+
+    private let observer: AnyObserver<[SKPaymentTransaction]>
+    private var restoredTransactions = [SKPaymentTransaction]()
+
+    init(observer: AnyObserver<[SKPaymentTransaction]>) {
+        self.observer = observer
+        super.init()
+    }
+}
+
+extension RestoreCompletedTransactionsObserver: SKPaymentTransactionObserver {
+
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        restoredTransactions += transactions
+    }
+
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        observer.onNext(restoredTransactions)
+        observer.onCompleted()
     }
 }
