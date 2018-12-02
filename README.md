@@ -41,7 +41,7 @@ SKPaymentQueue.default().rx.restoreCompletedTransactions()
 
 ```Swift
 let receiptValidator = ReceiptValidator(secret: "my_secret_key")
-receiptValidator.verifySubscription(productId: "my.product.id")
+receiptValidator.verifySubscription(productIds: ["my.product.id"])
     .subscribe(
       onNext: { receipt in
         // check expiry date of receipt
