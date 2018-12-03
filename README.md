@@ -31,9 +31,14 @@ SKPaymentQueue.default().rx.transactionsUpdated
 
 ```Swift
 SKPaymentQueue.default().rx.restoreCompletedTransactions()
-    .subscribe(onNext: { transactions: [SKPaymentTransaction] in
+    .subscribe(
+      onNext: { transactions: [SKPaymentTransaction] in
         // Unlock content?
-    })
+      },
+      onError: { error in
+        // handle the error
+      }
+    )
     .disposed(by: disposeBag)
 ```
 

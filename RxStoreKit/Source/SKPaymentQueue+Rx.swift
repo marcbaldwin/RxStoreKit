@@ -63,6 +63,10 @@ extension RestoreCompletedTransactionsObserver: SKPaymentTransactionObserver {
         restoredTransactions += transactions
     }
 
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        observer.onError(error)
+    }
+
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         observer.onNext(restoredTransactions)
         observer.onCompleted()
