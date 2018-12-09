@@ -29,16 +29,18 @@ public final class ReceiptValidator {
     }
 
     private func receiptData(forceRefresh: Bool) -> Observable<Data> {
-        if !forceRefresh, let receiptData = receiptData() {
-            return .just(receiptData)
-        } else {
-            return SKReceiptRefreshRequest().rx.observe
-                .map { _ in
-                    guard let receiptData = self.receiptData() else {
-                        throw ReceiptError.receiptMissing
+        return Observable.deferred {
+            if !forceRefresh, let receiptData = self.receiptData() {
+                return .just(receiptData)
+            } else {
+                return SKReceiptRefreshRequest().rx.observe
+                    .map { _ in
+                        guard let receiptData = self.receiptData() else {
+                            throw ReceiptError.receiptMissing
+                        }
+                        return receiptData
                     }
-                    return receiptData
-                }
+            }
         }
     }
 
