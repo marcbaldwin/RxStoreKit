@@ -4,11 +4,13 @@ import StoreKit
 public extension Reactive where Base: SKRequest {
 
     public var observe: Observable<SKRequest> {
-        return Observable.create { observer in
-            let observable = SKRequestObserver(observer: observer, request: self.base)
-            observable.start()
-            return Disposables.create {
-                observable.cancel()
+        return Observable.deferred {
+            Observable.create { observer in
+                let observable = SKRequestObserver(observer: observer, request: self.base)
+                observable.start()
+                return Disposables.create {
+                    observable.cancel()
+                }
             }
         }
     }
