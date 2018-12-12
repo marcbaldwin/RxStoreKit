@@ -26,6 +26,7 @@ private class SKRequestObserver: NSObject {
     }
 
     func start() {
+        request.delegate = self
         request.start()
     }
 
