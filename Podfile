@@ -1,8 +1,7 @@
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
+inhibit_all_warnings!
 
 target 'RxStoreKit' do
-  pod 'RxSwift'
-  pod 'Moya'
-  pod 'Moya/RxSwift'
+  pod 'Moya/RxSwift', '~> 13'
 end
