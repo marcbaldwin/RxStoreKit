@@ -3,7 +3,7 @@ import StoreKit
 
 public extension Reactive where Base : SKPaymentQueue {
 
-    public var transactionsUpdated: Observable<[SKPaymentTransaction]> {
+    var transactionsUpdated: Observable<[SKPaymentTransaction]> {
         return Observable.deferred {
             Observable.create { observer in
                 let observable = TransactionsUpdatedObserver(observer: observer)
@@ -15,7 +15,7 @@ public extension Reactive where Base : SKPaymentQueue {
         }
     }
 
-    public func restoreCompletedTransactions() -> Observable<[SKPaymentTransaction]> {
+    func restoreCompletedTransactions() -> Observable<[SKPaymentTransaction]> {
         return Observable.deferred {
             Observable.create { observer in
                 let observable = RestoreCompletedTransactionsObserver(observer: observer)

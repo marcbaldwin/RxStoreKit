@@ -3,7 +3,7 @@ import StoreKit
 
 public extension SKProduct {
 
-    public class func fetch(_ productIds: [String]) -> Observable<[SKProduct]> {
+    class func fetch(_ productIds: [String]) -> Observable<[SKProduct]> {
         return Observable.create { observer in
             let observable = ProductRequestObservable(productIds: productIds, observer: observer)
             return Disposables.create {
@@ -12,7 +12,7 @@ public extension SKProduct {
         }
     }
 
-    public func purchase() {
+    func purchase() {
         SKPaymentQueue.default().add(SKPayment(product: self))
     }
 }
