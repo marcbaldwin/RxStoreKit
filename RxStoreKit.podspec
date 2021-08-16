@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = "RxStoreKit"
-  s.version       = "1.6.0"
+  s.version       = "1.7.0"
   s.license       = "MIT"
   s.summary       = "RxSwift wrapper for Store Kit"
   s.homepage      = "https://github.com/marcbaldwin/RxStoreKit"
@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
   s.swift_version = '5'
   s.frameworks    = "Foundation", "StoreKit"
   s.dependency      'RxSwift', '~> 6'
-  s.dependency      'RxAlamofire', '~> 6'
+  s.dependency      'Alamofire', '~> 5'
 end
