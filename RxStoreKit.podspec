@@ -10,5 +10,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
   s.swift_version = '5'
   s.frameworks    = "Foundation", "StoreKit"
-  s.dependency      'Moya/RxSwift', '~> 14'
+  s.dependency      'RxSwift', '~> 6'
+  s.dependency      'RxAlamofire', '~> 6'
 end

@@ -1,44 +1,29 @@
-import Moya
+import Alamofire
+import RxSwift
 
-public enum ReceiptAPI {
-    case verifyReciept(receiptData: Data, secret: String, production: Bool)
-}
+final class ReceiptAPI {
 
-extension ReceiptAPI: TargetType {
+    func verifyReciept(receiptData: Data, secret: String, production: Bool) -> Single<ReceiptResult> {
+        let prefix = production ? "buy" : "sandbox"
+        let path = URL(string: "https://\(prefix).itunes.apple.com/verifyReceipt")!
 
-    public var baseURL: URL {
-        switch self {
-        case let .verifyReciept(_, _, production):
-            let prefix = production ? "buy" : "sandbox"
-            return URL(string: "https://\(prefix).itunes.apple.com/")!
-        }
-    }
+        let params: [String: Any] = [
+            "receipt-data": receiptData.base64EncodedString(options: []),
+            "password": secret
+        ]
 
-    public var path: String {
-        return "verifyReceipt"
-    }
+//        let data = try! JSONSerialization.data(withJSONObject: params, options: [])
+//        return .requestData(data)
 
-    public var method: Moya.Method {
-        return .post
-    }
-
-    public var sampleData: Data {
-        return "".data(using: .utf8)!
-    }
-
-    public var task: Moya.Task {
-        switch self {
-        case let .verifyReciept(receiptData, secret, _):
-            let params: [String: Any] = [
-                "receipt-data": receiptData.base64EncodedString(options: []),
-                "password": secret
-            ]
-            let data = try! JSONSerialization.data(withJSONObject: params, options: [])
-            return .requestData(data)
-        }
-    }
-
-    public var headers: [String: String]? {
-        return nil
+        return Alamofire.Session.default
+            .request(
+                path,
+                method: .post,
+                parameters: params
+            )
+            .rx.responseData()
+            .map { response in
+                try JSONDecoder().decode(ReceiptResult.self, from: response.data)
+            }
     }
 }

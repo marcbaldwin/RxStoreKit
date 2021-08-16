@@ -1,18 +1,17 @@
-import Moya
 import RxSwift
 import StoreKit
 
 public final class ReceiptValidator {
 
     private let secret: String
-    private let receiptApi = MoyaProvider<ReceiptAPI>()
+    private let receiptApi = ReceiptAPI()
 
     public init(secret: String) {
         self.secret = secret
     }
 
     public func verifySubscription(productIds: [String], forceRefresh: Bool = false, production: Bool = true) -> Observable<ReceiptItem?> {
-        return receiptData(forceRefresh: forceRefresh)
+        receiptData(forceRefresh: forceRefresh)
             .flatMap { receipt in self.verify(receipt: receipt, production: production) }
             .flatMap { result -> Observable<ReceiptItem?> in
                 switch result.status {
@@ -29,7 +28,7 @@ public final class ReceiptValidator {
     }
 
     private func receiptData(forceRefresh: Bool) -> Observable<Data> {
-        return Observable.deferred {
+        .deferred {
             if !forceRefresh, let receiptData = self.receiptData() {
                 return .just(receiptData)
             } else {
@@ -44,22 +43,19 @@ public final class ReceiptValidator {
         }
     }
 
-    private func verify(receipt: Data, production: Bool) -> Observable<ReceiptResult> {
-        return receiptApi.rx.request(.verifyReciept(receiptData: receipt, secret: secret, production: production))
-            .asObservable()
-            .filterSuccessfulStatusCodes()
-            .map { response in try JSONDecoder().decode(ReceiptResult.self, from: response.data) }
+    private func verify(receipt: Data, production: Bool) -> Single<ReceiptResult> {
+        receiptApi.verifyReciept(receiptData: receipt, secret: secret, production: production)
     }
 
     private func receiptData() -> Data? {
-        return try? Data(contentsOf: Bundle.main.appStoreReceiptURL!)
+        try? Data(contentsOf: Bundle.main.appStoreReceiptURL!)
     }
 }
 
 extension Array where Element == ReceiptItem {
 
     func latestValidReceipt(productIds: [String]) -> ReceiptItem? {
-        return filter { productIds.contains($0.productId) && $0.subscriptionExpiryDate != nil }
+        filter { productIds.contains($0.productId) && $0.subscriptionExpiryDate != nil }
             .sorted { a, b in a.subscriptionExpiryDate! > b.subscriptionExpiryDate! }
             .first
     }

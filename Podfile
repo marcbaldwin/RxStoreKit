@@ -3,7 +3,8 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'RxStoreKit' do
-  pod 'Moya/RxSwift', '~> 14'
+  pod 'Alamofire', '~> 5'
+  pod 'RxSwift', '~> 6'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|

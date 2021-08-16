@@ -13,6 +13,7 @@
 		49FFB21F21995AF8003F21C1 /* ReceiptItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FFB21C21995AF8003F21C1 /* ReceiptItem.swift */; };
 		49FFB22121995E26003F21C1 /* ReceiptError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FFB22021995E26003F21C1 /* ReceiptError.swift */; };
 		8E2B523FD91CD308E568045E /* Pods_RxStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C127711C0821C3A78BAAEAC4 /* Pods_RxStoreKit.framework */; };
+		A007C55D26CA5DD000BE4D17 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C55C26CA5DD000BE4D17 /* HTTPRequest.swift */; };
 		A03371D11EAA696500B0EA23 /* RxStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03371C71EAA696500B0EA23 /* RxStoreKit.framework */; };
 		A03371D61EAA696500B0EA23 /* RxStoreKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03371D51EAA696500B0EA23 /* RxStoreKitTests.swift */; };
 		A03371D81EAA696500B0EA23 /* RxStoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A03371CA1EAA696500B0EA23 /* RxStoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,6 +39,7 @@
 		49FFB21C21995AF8003F21C1 /* ReceiptItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptItem.swift; sourceTree = "<group>"; };
 		49FFB22021995E26003F21C1 /* ReceiptError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptError.swift; sourceTree = "<group>"; };
 		4FA26099712D3560933A9511 /* Pods-RxStoreKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxStoreKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxStoreKit/Pods-RxStoreKit.release.xcconfig"; sourceTree = "<group>"; };
+		A007C55C26CA5DD000BE4D17 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		A03371C71EAA696500B0EA23 /* RxStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03371CA1EAA696500B0EA23 /* RxStoreKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxStoreKit.h; sourceTree = "<group>"; };
 		A03371CB1EAA696500B0EA23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		49FFB21921995A89003F21C1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A007C55C26CA5DD000BE4D17 /* HTTPRequest.swift */,
 				49FFB21B21995AF8003F21C1 /* ReceiptAPI.swift */,
 				49FFB22021995E26003F21C1 /* ReceiptError.swift */,
 				49FFB21C21995AF8003F21C1 /* ReceiptItem.swift */,
@@ -285,6 +288,7 @@
 				49FFB22121995E26003F21C1 /* ReceiptError.swift in Sources */,
 				49FFB21E21995AF8003F21C1 /* ReceiptAPI.swift in Sources */,
 				A03371E21EAA69AB00B0EA23 /* SKProductExtensions.swift in Sources */,
+				A007C55D26CA5DD000BE4D17 /* HTTPRequest.swift in Sources */,
 				A03371E41EAA6C7300B0EA23 /* SKProduct+Rx.swift in Sources */,
 				49FFB21F21995AF8003F21C1 /* ReceiptItem.swift in Sources */,
 			);
