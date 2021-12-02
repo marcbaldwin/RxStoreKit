@@ -1,4 +1,9 @@
+# iDraw
+**.idraw
+**.pages
+
 # Xcode
+.DS_Store
 build/
 *.pbxuser
 !default.pbxuser
@@ -8,12 +13,42 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata/
+xcuserdata
 *.xccheckout
 *.moved-aside
 DerivedData
 *.hmap
 *.ipa
+*.dSYM.zip
+*.dSYM
 *.xcuserstate
-Pods/*
-*.DS_Store
+*.xccheckout
+
+# Certificates
+*.cer
+*.certSigningRequest
+*.p12
+*.mobileprovision
+
+# Builds
+*.dSYM.zip
+*.ipa
+
+*.xcworkspace
+!default.xcworkspace
+
+# AppCode
+.idea/
+
+Pods/
+images/
+vendor/
+.bundle/
+
+# Fastlane
+Preview.html
+/fastlane/README.md
+/fastlane/report.xml
+/fastlane/test_output/
+/fastlane/screenshots/screenshots.html
+/fastlane/screenshots/*/*.png
