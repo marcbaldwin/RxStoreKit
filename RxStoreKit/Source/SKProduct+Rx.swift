@@ -3,8 +3,8 @@ import StoreKit
 
 public extension SKProduct {
 
-    class func fetch(_ productIds: [String]) -> Observable<[SKProduct]> {
-        return Observable.create { observer in
+    class func fetch(_ productIds: [String]) -> Single<[SKProduct]> {
+        .create { observer in
             let observable = ProductRequestObservable(productIds: productIds, observer: observer)
             return Disposables.create {
                 observable.cancel()
@@ -20,9 +20,9 @@ public extension SKProduct {
 private final class ProductRequestObservable: NSObject {
 
     private let request: SKProductsRequest
-    private let observer: AnyObserver<[SKProduct]>
+    private let observer: (Result<[SKProduct], Error>) -> Void
 
-    init(productIds: [String], observer: AnyObserver<[SKProduct]>) {
+    init(productIds: [String], observer: @escaping (Result<[SKProduct], Error>) -> Void) {
         self.request = SKProductsRequest(productIdentifiers: Set(productIds))
         self.observer = observer
         super.init()
@@ -40,14 +40,13 @@ extension ProductRequestObservable: SKProductsRequestDelegate {
 
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         if response.invalidProductIdentifiers.isEmpty {
-            observer.onNext(response.products)
-            observer.onCompleted()
+            observer(.success(response.products))
         } else {
-            observer.onError(NSError(domain: "Invalid", code: 0, userInfo: nil))
+            observer(.failure(NSError(domain: "Invalid", code: 0, userInfo: nil)))
         }
     }
 
     func request(_ request: SKRequest, didFailWithError error: Error) {
-        observer.onError(error)
+        observer(.failure(error))
     }
 }
