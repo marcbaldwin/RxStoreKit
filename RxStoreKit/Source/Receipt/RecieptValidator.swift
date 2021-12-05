@@ -10,10 +10,10 @@ public final class ReceiptValidator {
         self.secret = secret
     }
 
-    public func verifySubscription(productIds: [String], forceRefresh: Bool = false, production: Bool = true) -> Observable<ReceiptItem?> {
+    public func verifySubscription(productIds: [String], forceRefresh: Bool = false, production: Bool = true) -> Single<ReceiptItem?> {
         receiptData(forceRefresh: forceRefresh)
             .flatMap { receipt in self.verify(receipt: receipt, production: production) }
-            .flatMap { result -> Observable<ReceiptItem?> in
+            .flatMap { result -> Single<ReceiptItem?> in
                 switch result.status {
                 case 0:
                     return .just(result.latestReceipts?.latestValidReceipt(productIds: productIds))
@@ -27,7 +27,7 @@ public final class ReceiptValidator {
             }
     }
 
-    private func receiptData(forceRefresh: Bool) -> Observable<Data> {
+    private func receiptData(forceRefresh: Bool) -> Single<Data> {
         .deferred {
             if !forceRefresh, let receiptData = self.receiptData() {
                 return .just(receiptData)

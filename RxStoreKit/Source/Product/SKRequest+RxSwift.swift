@@ -3,9 +3,9 @@ import StoreKit
 
 public extension Reactive where Base: SKRequest {
 
-    var observe: Observable<SKRequest> {
-        return Observable.deferred {
-            Observable.create { observer in
+    var observe: Single<SKRequest> {
+        .deferred {
+            .create { observer in
                 let observable = SKRequestObserver(observer: observer, request: self.base)
                 observable.start()
                 return Disposables.create {
@@ -18,10 +18,10 @@ public extension Reactive where Base: SKRequest {
 
 private class SKRequestObserver: NSObject {
 
-    private let observer: AnyObserver<SKRequest>
+    private let observer: (Result<SKRequest, Error>) -> Void
     private let request: SKRequest
 
-    init(observer: AnyObserver<SKRequest>, request: SKRequest) {
+    init(observer: @escaping (Result<SKRequest, Error>) -> Void, request: SKRequest) {
         self.observer = observer
         self.request = request
         super.init()
@@ -40,11 +40,10 @@ private class SKRequestObserver: NSObject {
 extension SKRequestObserver: SKRequestDelegate {
 
     func requestDidFinish(_ request: SKRequest) {
-        observer.onNext(request)
-        observer.onCompleted()
+        observer(.success(request))
     }
 
     func request(_ request: SKRequest, didFailWithError error: Error) {
-        observer.onError(error)
+        observer(.failure(error))
     }
 }
