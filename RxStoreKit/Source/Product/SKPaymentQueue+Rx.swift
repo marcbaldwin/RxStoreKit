@@ -15,9 +15,9 @@ public extension Reactive where Base : SKPaymentQueue {
         }
     }
 
-    func restoreCompletedTransactions() -> Observable<[SKPaymentTransaction]> {
-        return Observable.deferred {
-            Observable.create { observer in
+    func restoreCompletedTransactions() -> Single<[SKPaymentTransaction]> {
+        .deferred {
+            .create { observer in
                 let observable = RestoreCompletedTransactionsObserver(observer: observer)
                 self.base.add(observable)
                 self.base.restoreCompletedTransactions()
@@ -48,10 +48,10 @@ extension TransactionsUpdatedObserver: SKPaymentTransactionObserver {
 
 private class RestoreCompletedTransactionsObserver: NSObject {
 
-    private let observer: AnyObserver<[SKPaymentTransaction]>
+    private let observer: (Result<[SKPaymentTransaction], Error>) -> Void
     private var restoredTransactions = [SKPaymentTransaction]()
 
-    init(observer: AnyObserver<[SKPaymentTransaction]>) {
+    init(observer: @escaping (Result<[SKPaymentTransaction], Error>) -> Void) {
         self.observer = observer
         super.init()
     }
@@ -64,11 +64,10 @@ extension RestoreCompletedTransactionsObserver: SKPaymentTransactionObserver {
     }
 
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
-        observer.onError(error)
+        observer(.failure(error))
     }
 
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        observer.onNext(restoredTransactions)
-        observer.onCompleted()
+        observer(.success(restoredTransactions))
     }
 }
