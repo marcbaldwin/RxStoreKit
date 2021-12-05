@@ -4,8 +4,8 @@ import StoreKit
 public extension Reactive where Base : SKPaymentQueue {
 
     var transactionsUpdated: Observable<[SKPaymentTransaction]> {
-        return Observable.deferred {
-            Observable.create { observer in
+        .deferred {
+            .create { observer in
                 let observable = TransactionsUpdatedObserver(observer: observer)
                 self.base.add(observable)
                 return Disposables.create {
