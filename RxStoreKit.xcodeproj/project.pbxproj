@@ -81,7 +81,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		49FFB21921995A89003F21C1 /* Source */ = {
+		49F370F6275CC86E00D8324A /* Receipt */ = {
 			isa = PBXGroup;
 			children = (
 				A007C55C26CA5DD000BE4D17 /* HTTPRequest.swift */,
@@ -89,10 +89,26 @@
 				49FFB22021995E26003F21C1 /* ReceiptError.swift */,
 				49FFB21C21995AF8003F21C1 /* ReceiptItem.swift */,
 				49FFB21A21995AF8003F21C1 /* RecieptValidator.swift */,
+			);
+			path = Receipt;
+			sourceTree = "<group>";
+		};
+		49F370F7275CC8CD00D8324A /* Product */ = {
+			isa = PBXGroup;
+			children = (
 				A03371E51EAA6E9D00B0EA23 /* SKPaymentQueue+Rx.swift */,
 				A03371E31EAA6C7300B0EA23 /* SKProduct+Rx.swift */,
 				A03371E11EAA69AB00B0EA23 /* SKProductExtensions.swift */,
 				49DE8661219854F100869051 /* SKRequest+RxSwift.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		49FFB21921995A89003F21C1 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				49F370F7275CC8CD00D8324A /* Product */,
+				49F370F6275CC86E00D8324A /* Receipt */,
 			);
 			path = Source;
 			sourceTree = "<group>";
